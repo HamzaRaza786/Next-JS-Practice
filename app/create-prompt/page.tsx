@@ -19,11 +19,12 @@ const CreatePrompt = () => {
             method: 'POST',
             body: JSON.stringify({
                 prompt: post.prompt,
-                userId: session?.user.id,
+                userId: session?.user?.id,
                 tag: post.tag
             })  
         })
         if(response.ok){
+            console.log(response);
             router.push('/')
         }
         }catch(error){
