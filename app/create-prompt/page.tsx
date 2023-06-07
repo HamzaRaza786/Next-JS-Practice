@@ -24,11 +24,11 @@ const CreatePrompt = () => {
             })  
         })
         if(response.ok){
-            console.log(response);
             router.push('/')
         }
         }catch(error){
             console.log(error)
+            throw error;
         }finally{
             setSubmitting(false);
         }

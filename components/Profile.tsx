@@ -8,14 +8,15 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete}:any) => {
       <p className='desc test-left'>{desc}</p>
 
       <div className='mt-10 prompt_layout'>
-        {data?.length != 0?
+        {data?.length > 0 ?
         data.map((post:any) => {
+          return(
           <PromptCard
             key={post.id}
             post={post}
-            handleTagClick={() => handleEdit && handleEdit(post)}
+            handleEdit={() => handleEdit && handleEdit(post)}
             handleDelete={() => handleDelete && handleDelete(post)}
-            />
+            /> )
         }):<div>No posts</div>}
       </div>
     </section>
