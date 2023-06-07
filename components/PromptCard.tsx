@@ -3,7 +3,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
-import { set } from "mongoose";
 const PromptCard = ({
   post,
   handleTagClick,
@@ -56,7 +55,7 @@ const PromptCard = ({
       >
         {post.tag}
       </p>
-      {session?.user.id === post.creator._id && (
+      {session?.user.id === post.creator._id && handleEdit && handleDelete && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"

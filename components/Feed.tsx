@@ -1,7 +1,8 @@
 'use client';
 import {useState, useEffect} from 'react';
+import { useRouter } from 'next/navigation';
 import PromptCard from './PromptCard';
-const PromptCardList = ({data, handleTagClick} : any) => {
+const PromptCardList = ({data, handleTagClick, handleDelete, handleEdit} : any) => {
   return (
     <div className='mt-16 prompt_layout'>
       {data.map((post:any) => {
@@ -9,7 +10,10 @@ const PromptCardList = ({data, handleTagClick} : any) => {
         <PromptCard
           key={post.id}
           post={post}
-          handleTagClick={handleTagClick}/>)
+          handleTagClick={handleTagClick}
+          handleDelete={handleDelete}
+          handleEdit={handleEdit}
+          />)
       })}
     </div>
   )
@@ -17,8 +21,9 @@ const PromptCardList = ({data, handleTagClick} : any) => {
 const Feed = () => {
   const [searchText, setSearchText] = useState('');
   const [posts, setPosts] = useState([]);
+  const router = useRouter();
   const handleSearchChange =async () => {
-    
+  
   }
   useEffect(() => {
     const fetchPosts =async () => {
@@ -28,7 +33,8 @@ const Feed = () => {
       setPosts(data);
     }
     fetchPosts();
-  }, [])
+  }, []);
+
   return (
     <section className='feed'>
       <form className='relative w-full flex-center'>

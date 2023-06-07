@@ -24,11 +24,18 @@ const CreatePrompt = () => {
             })  
         })
         if(response.ok){
+<<<<<<< HEAD
+=======
             console.log(response);
+>>>>>>> f33378a815298b86ddeb1b1c271d879ca8a70201
             router.push('/')
         }
         }catch(error){
             console.log(error)
+<<<<<<< HEAD
+            throw error;
+=======
+>>>>>>> f33378a815298b86ddeb1b1c271d879ca8a70201
         }finally{
             setSubmitting(false);
         }
