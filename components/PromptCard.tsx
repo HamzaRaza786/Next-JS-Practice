@@ -10,7 +10,7 @@ const PromptCard = ({
   handleDelete,
 }: any) => {
   const [copied, setCopied] = useState("");
-  const {data:session} = useSession();
+  const {data:session}:any = useSession();
   const handleCopy = () => {
     setCopied(post.prompt);
     setTimeout(() => setCopied(""), 3000);
