@@ -8,6 +8,7 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete}:any) => {
       <p className='desc test-left'>{desc}</p>
 
       <div className='mt-10 prompt_layout'>
+<<<<<<< HEAD
         {data?.length > 0 ?
         data.map((post:any) => {
           return(
@@ -17,6 +18,16 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete}:any) => {
             handleEdit={() => handleEdit && handleEdit(post)}
             handleDelete={() => handleDelete && handleDelete(post)}
             /> )
+=======
+        {data?.length != 0?
+        data.map((post:any) => {
+          <PromptCard
+            key={post.id}
+            post={post}
+            handleTagClick={() => handleEdit && handleEdit(post)}
+            handleDelete={() => handleDelete && handleDelete(post)}
+            />
+>>>>>>> f33378a815298b86ddeb1b1c271d879ca8a70201
         }):<div>No posts</div>}
       </div>
     </section>
