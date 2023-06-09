@@ -22,8 +22,28 @@ const Feed = () => {
   const [searchText, setSearchText] = useState('');
   const [posts, setPosts] = useState([]);
   const router = useRouter();
-  const handleSearchChange =async () => {
-  
+  const handleSearchChange =async (searchText:string) => {
+    setSearchText(searchText);
+    try{
+    const response:any = await fetch('/api/search', {
+      method: "POST",
+      body:JSON.stringify({searchText})
+    });
+    const data = await response.json();
+    console.log("Response",data)
+    return(
+      <section>
+        {data.map((prompt:string) => {
+          <PromptCard
+            post={prompt}
+          />
+        })}
+      </section>
+    )
+  }catch(error){
+    console.log(error)
+    throw error;
+  }
   }
   useEffect(() => {
     const fetchPosts =async () => {
@@ -42,7 +62,7 @@ const Feed = () => {
           type = "text"
           placeholder='Search for a tag or a username'
           value={searchText}
-          onChange={handleSearchChange}
+          onChange={(e) => handleSearchChange(e.target.value)}
           required
           className='search_input peer'
           />

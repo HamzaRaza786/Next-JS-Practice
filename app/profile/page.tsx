@@ -4,16 +4,12 @@ import {useSession} from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Profile from '@components/Profile';
 const Profiles = () => {
-<<<<<<< HEAD
     const {data:session}:any = useSession();
     const [posts, setPosts] = useState([]);
     const router = useRouter();
     useEffect(() => {
         if (!session?.user) return;
 
-=======
-    useEffect(() => {
->>>>>>> f33378a815298b86ddeb1b1c271d879ca8a70201
         const fetchPosts = async () => {
           const response = await fetch(`api/users/${session?.user.id}/posts`);
           const data = await response.json();
@@ -22,7 +18,6 @@ const Profiles = () => {
         if(session?.user.id){
             fetchPosts();
         }
-<<<<<<< HEAD
       }, [session?.user,]);
     const handleEdit = (post:any) => {
         router.push(`/update-prompt?id=${post._id}`);
@@ -42,16 +37,6 @@ const Profiles = () => {
                 throw error;
             }
         }
-=======
-      }, []);
-    const {data:session} = useSession();
-    const [posts, setPosts] = useState([]);
-    const handleEdit = () => {
-
-    }
-    const handleDelete = () =>{
-
->>>>>>> f33378a815298b86ddeb1b1c271d879ca8a70201
     }
   return (
     <Profile
@@ -61,7 +46,7 @@ const Profiles = () => {
         handleEdit={handleEdit}
         handleDelete={handleDelete}
         />
-  )
+  );
 }
 
 export default Profiles;
