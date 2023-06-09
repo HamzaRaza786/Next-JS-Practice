@@ -10,7 +10,7 @@ const PromptCard = ({
   handleDelete,
 }: any) => {
   const [copied, setCopied] = useState("");
-  const {data:session} = useSession();
+  const {data:session}:any = useSession();
   const handleCopy = () => {
     setCopied(post.prompt);
     setTimeout(() => setCopied(""), 3000);
@@ -48,7 +48,7 @@ const PromptCard = ({
           />
         </div>
       </div>
-      <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
+      <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt.substring(0,50)}</p>
       <p
         className="font-inter text-sm blue_gradient cursor-pointer"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
