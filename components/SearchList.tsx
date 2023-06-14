@@ -2,7 +2,6 @@ import PromptCard from "./PromptCard";
 import Link from "next/link";
 
 const SearchList = ({ promptsList }: any) => {
-  console.log("In search List", promptsList);
   if (promptsList?.length > 0) {
     return (
       <span className="search-bar">
