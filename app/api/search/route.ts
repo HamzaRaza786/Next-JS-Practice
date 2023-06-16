@@ -7,7 +7,7 @@ export const POST = async (request: Request) => {
     await connectToDB();
     const regex = new RegExp(searchText, "i"); // i for case insensitive
     const prompts = await Prompt.find({
-      prompt: { $regex: regex }
+      prompt: { $regex: regex },
     }).populate("creator");
     return new Response(JSON.stringify(prompts), { status: 200 });
   } catch (error) {
