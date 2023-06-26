@@ -25,7 +25,7 @@
   },
   "include": [
     "components/Nav.jsx",
-    "app/api/auth/[...nextauth]/route.js",
+    "app/api/auth/[...nextauth]/route.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

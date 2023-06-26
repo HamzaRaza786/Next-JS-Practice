@@ -15,7 +15,7 @@ const EditPrompt = () => {
 
     useEffect(() => {
         const getPromptDetails = async () =>{
-            const response = await fetch(`api/prompt/${promptId}`);
+            const response = await fetch(`/api/prompt/${promptId}`);
             const data = await response.json();
             setPost({
                 prompt:data.prompt,

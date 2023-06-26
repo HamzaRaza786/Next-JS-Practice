@@ -5,19 +5,19 @@ import User from "@models/user";
 const handler = NextAuth({
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId: process.env.GOOGLE_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
   callbacks: {
-  async session({ session }) {
+  async session({ session }:any) {
     const sessionUser = await User.findOne({
-      email:session.user.email
+      email:session?.user?.email
     });
     session.user.id = sessionUser._id.toString();
     return session;
   },
-  async signIn({ profile }) {
+  async signIn({ profile }:any) {
     try{
         await connectToDB();
         const userExists = await User.findOne({
